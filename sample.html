@@ -10,8 +10,17 @@ Open the console.
 
 <script type="text/javascript">
     localStorage.clear();
+    var sampleList = [
+        {name: 'A',value: 1},
+        {name: 'B',value: 2},
+        {name: 'C',value: 3},
+        {name: 'D',value: 4},
+        {name: 'E',value: 5},
+    ];
 
     var simpleLogger = new Logger();
+    simpleLogger.table(sampleList);
+
     simpleLogger.trace('Trace message');
     simpleLogger.debug('Debug message');
     simpleLogger.info('Info message');
@@ -49,8 +58,6 @@ Open the console.
     console.log('');
     console.log('-------------------');
     console.log('');
-
-    Logger.setMinimumLogLevel(Logger.getLogLevels().WARN);
 
     simpleLogger.trace('Trace message');
     simpleLogger.debug('Debug message');

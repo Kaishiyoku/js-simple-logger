@@ -2,6 +2,8 @@ import getLogMethodFor from './getLogMethodFor';
 import partial from 'ramda/es/partial';
 import CONFIG from './CONFIG';
 import LOG_LEVEL from './LOG_LEVEL';
+import withMinimumLogLevel from './withMinimumLogLevel';
+import buildMetaInformation from './buildMetaInformation';
 
 const Logger = class {
     context = null;
@@ -37,6 +39,8 @@ const Logger = class {
     trace = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.TRACE)(...messages);
 
     debug = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.DEBUG)(...messages);
+
+    table = (list) => withMinimumLogLevel(buildMetaInformation(Logger.getMinimumLogLevel(), LOG_LEVEL.TABLE, null, null))(() => console.table(list));
 
     info = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.INFO)(...messages);
 
