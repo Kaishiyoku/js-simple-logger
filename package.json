@@ -83,7 +83,9 @@
       "DEVELOPMENT": false,
       "FAKE_SERVER": false
     },
-    "setupFiles": [],
+    "setupFiles": [
+      "<rootDir>/__mocks__/consoleMock.js"
+    ],
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.jsx?$": "babel-jest"
