@@ -2,7 +2,6 @@ import getLogMethodFor from './getLogMethodFor';
 import partial from 'ramda/es/partial';
 import CONFIG from './CONFIG';
 import LOG_LEVEL from './LOG_LEVEL';
-import formatLogLevel from './formatLogLevel';
 
 const Logger = class {
     context = null;
