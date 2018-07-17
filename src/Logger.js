@@ -1,17 +1,22 @@
 import getLogMethodFor from './getLogMethodFor';
+import partial from 'ramda/es/partial';
 
-class Logger {
-    trace = getLogMethodFor('trace');
+const Logger = (context = null) => {
+    const getLogMethodWithContextFor = partial(getLogMethodFor, [context]);
 
-    debug = getLogMethodFor('debug');
+    return new class {
+        trace = getLogMethodWithContextFor('trace');
 
-    info = getLogMethodFor('info');
+        debug = getLogMethodWithContextFor('debug');
 
-    log = getLogMethodFor('log');
+        info = getLogMethodWithContextFor('info');
 
-    warn = getLogMethodFor('warn');
+        log = getLogMethodWithContextFor('log');
 
-    error = getLogMethodFor('error');
-}
+        warn = getLogMethodWithContextFor('warn');
+
+        error = getLogMethodWithContextFor('error');
+    };
+};
 
 export default Logger;
