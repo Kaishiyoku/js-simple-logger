@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import log from 'log';
+import log from './log';
 
 const logLevelResolvers = {
     debug: log(console.debug),

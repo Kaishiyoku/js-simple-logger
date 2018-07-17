@@ -2,19 +2,22 @@
 import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import {terser} from 'rollup-plugin-terser';
-import flow from 'rollup-plugin-flow';
+import babel from 'rollup-plugin-babel';
+// import flow from 'rollup-plugin-flow';
 import pkg from './package.json';
 
 export default [
     {
         input: 'src/main.js',
+        external: ['ramda'],
         output: {
-            name: 'simple-logger',
+            name: 'Logger',
             file: pkg.browser,
             format: 'umd',
         },
         plugins: [
-            flow(),
+            // flow(),
+            babel(),
             resolve(),
             commonjs(),
             terser(),
@@ -22,22 +25,24 @@ export default [
     },
     {
         input: 'src/main.js',
-        external: ['ramda', 'lodash'],
+        external: ['ramda'],
         output: [
             {file: pkg.module, format: 'es'},
         ],
         plugins: [
-            flow(),
+            // flow(),
+            babel(),
         ],
     },
     {
         input: 'src/main.js',
-        external: ['ramda', 'lodash'],
+        external: ['ramda'],
         output: [
             {file: pkg.main, format: 'cjs'},
         ],
         plugins: [
-            flow(),
+            // flow(),
+            babel(),
             terser(),
         ],
     },
