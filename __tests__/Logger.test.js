@@ -1,28 +1,40 @@
 /* eslint-disable no-console */
 import Logger from '../src/Logger';
+import MockDate from 'mockdate';
 
 describe('Logger', () => {
-    it('should log a simple message properly', () => {
-        const logger = Logger();
-        logger.debug('Debug message');
-        logger.error('Error message');
-        logger.info('Info message');
-        logger.log('Log message');
-        logger.trace('Trace message');
-        logger.warn('Warn message');
+    MockDate.set('3/10/2017 15:05:20.389');
 
-        expect(console.debug).toHaveBeenCalledWith('[DEBUG]', 'Debug message');
-        expect(console.error).toHaveBeenCalledWith('[ERROR]', 'Error message');
-        expect(console.info).toHaveBeenCalledWith('[INFO]', 'Info message');
-        expect(console.log).toHaveBeenCalledWith('[LOG]', 'Log message');
-        expect(console.trace).toHaveBeenCalledWith('[TRACE]', 'Trace message');
-        expect(console.warn).toHaveBeenCalledWith('[WARN]', 'Warn message');
+    var sampleData = [
+        {name: 'A',value: 1},
+        {name: 'B',value: 2},
+        {name: 'C',value: 3},
+        {name: 'D',value: 4},
+        {name: 'E',value: 5},
+    ];
+
+    it('should log a simple message properly', () => {
+        Logger.setMinimumLogLevel(Logger.getLogLevels().TRACE);
+        const logger = new Logger();
+
+        expect(logger.trace('Trace message')).toMatchSnapshot();
+        expect(logger.debug('Debug message')).toMatchSnapshot();
+        expect(logger.table(sampleData)).toEqual(sampleData);
+        expect(logger.info('Info message')).toMatchSnapshot();
+        expect(logger.log('Log message')).toMatchSnapshot();
+        expect(logger.warn('Warn message')).toMatchSnapshot();
+        expect(logger.error('Error message')).toMatchSnapshot();
     });
 
     it('should log with a context', () => {
-        const logger = Logger('main');
-        logger.debug('Test message');
+        const logger = new Logger('main');
 
-        expect(console.debug).toHaveBeenCalledWith('[DEBUG]', '[main]', 'Test message');
+        expect(logger.trace('Trace message')).toMatchSnapshot();
+        expect(logger.debug('Debug message')).toMatchSnapshot();
+        expect(logger.table(sampleData)).toEqual(sampleData);
+        expect(logger.info('Info message')).toMatchSnapshot();
+        expect(logger.log('Log message')).toMatchSnapshot();
+        expect(logger.warn('Warn message')).toMatchSnapshot();
+        expect(logger.error('Error message')).toMatchSnapshot();
     });
 });

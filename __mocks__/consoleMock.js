@@ -1,11 +1,12 @@
 const consoleMock = (() => {
     return {
-        debug: jest.fn(),
-        error: jest.fn(),
-        info: jest.fn(),
-        log: jest.fn(),
-        trace: jest.fn(),
-        warn: jest.fn(),
+        debug: (...messages) => messages.join(' '),
+        error: (...messages) => messages.join(' '),
+        info: (...messages) => messages.join(' '),
+        log: (...messages) => messages.join(' '),
+        table: (data) => data,
+        trace: (...messages) => messages.join(' '),
+        warn: (...messages) => messages.join(' '),
     };
 })();
 

@@ -58,6 +58,7 @@
     "flow-bin": "^0.76.0",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.1.0",
+    "mockdate": "^2.0.2",
     "ramda": "^0.25.0",
     "rollup": "0.60.7",
     "rollup-plugin-babel": "^3.0.7",
@@ -87,7 +88,8 @@
       "FAKE_SERVER": false
     },
     "setupFiles": [
-      "<rootDir>/__mocks__/consoleMock.js"
+      "<rootDir>/__mocks__/consoleMock.js",
+      "<rootDir>/__mocks__/localStorageMock.js"
     ],
     "transform": {
       "^.+\\.js$": "babel-jest",
