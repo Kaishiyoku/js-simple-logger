@@ -1,5 +1,5 @@
 {
-  "name": "simple-logger",
+  "name": "js-simple-logger",
   "version": "1.0.0",
   "description": "Simple JavaScript-logger.",
   "main": "dist/simple-logger.cjs.js",
