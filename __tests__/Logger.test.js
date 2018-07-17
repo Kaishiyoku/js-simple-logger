@@ -6,11 +6,11 @@ describe('Logger', () => {
     MockDate.set('3/10/2017 15:05:20.389');
 
     const sampleData = [
-        {name: 'A',value: 1},
-        {name: 'B',value: 2},
-        {name: 'C',value: 3},
-        {name: 'D',value: 4},
-        {name: 'E',value: 5},
+        {name: 'A', value: 1},
+        {name: 'B', value: 2},
+        {name: 'C', value: 3},
+        {name: 'D', value: 4},
+        {name: 'E', value: 5},
     ];
 
     it('should log a simple message properly', () => {
