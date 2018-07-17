@@ -1,5 +1,5 @@
-const withContext = (context) => (fn) => (...messages) => {
-    return context ? fn(`[${context}]`, ...messages) : fn(...messages);
+const withContext = (context, messages) => {
+    return context ? [`[${context}]`].concat(messages) : messages;
 };
 
 export default withContext;
