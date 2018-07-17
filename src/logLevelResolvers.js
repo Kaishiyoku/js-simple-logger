@@ -1,13 +1,14 @@
 /* eslint-disable no-console */
 import log from './log';
+import LOG_LEVEL from './LOG_LEVEL';
 
 const logLevelResolvers = {
-    debug: log(console.debug),
-    error: log(console.error),
-    info: log(console.info),
-    log: log(console.log),
-    trace: log(console.trace),
-    warn: log(console.warn),
+    [LOG_LEVEL.TRACE]: log(console.trace),
+    [LOG_LEVEL.DEBUG]: log(console.debug),
+    [LOG_LEVEL.INFO]: log(console.info),
+    [LOG_LEVEL.LOG]: log(console.log),
+    [LOG_LEVEL.WARN]: log(console.warn),
+    [LOG_LEVEL.ERROR]: log(console.error),
 };
 
 export default logLevelResolvers;

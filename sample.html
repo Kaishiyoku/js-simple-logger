@@ -18,7 +18,7 @@
     simpleLogger.error('Error message');
 
     console.log('');
-    console.log('');
+    console.log('-------------------');
     console.log('');
 
     Logger.setDateFormat('HH:mm:ss');
@@ -30,6 +30,32 @@
     contextLogger.log('Log message');
     contextLogger.warn('Warn message');
     contextLogger.error('Error message');
+
+    console.log('');
+    console.log('-------------------');
+    console.log('');
+
+    Logger.setMinimumLogLevel(Logger.getLogLevels().TRACE);
+
+    simpleLogger.trace('Trace message');
+    simpleLogger.debug('Debug message');
+    simpleLogger.info('Info message');
+    simpleLogger.log('Log message');
+    simpleLogger.warn('Warn message');
+    simpleLogger.error('Error message');
+
+    console.log('');
+    console.log('-------------------');
+    console.log('');
+
+    Logger.setMinimumLogLevel(Logger.getLogLevels().WARN);
+
+    simpleLogger.trace('Trace message');
+    simpleLogger.debug('Debug message');
+    simpleLogger.info('Info message');
+    simpleLogger.log('Log message');
+    simpleLogger.warn('Warn message');
+    simpleLogger.error('Error message');
 </script>
 
 </body>

@@ -1,6 +1,8 @@
 import getLogMethodFor from './getLogMethodFor';
 import partial from 'ramda/es/partial';
 import CONFIG from './CONFIG';
+import LOG_LEVEL from './LOG_LEVEL';
+import formatLogLevel from './formatLogLevel';
 
 const Logger = class {
     context = null;
@@ -21,19 +23,29 @@ const Logger = class {
         return localStorage.getItem(CONFIG.localStorageKeys.dateFormat) || CONFIG.defaultDateFormat;
     }
 
-    getLogMethodWithMetaInformationFor = partial(getLogMethodFor, [this.getContext(), Logger.getDateFormat()]);
+    static setMinimumLogLevel(logLevel) {
+        localStorage.setItem(CONFIG.localStorageKeys.minimumLogLevel, logLevel);
+    }
 
-    trace = this.getLogMethodWithMetaInformationFor('trace');
+    static getMinimumLogLevel() {
+        return localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel) || CONFIG.defaultMinimumLogLevel;
+    }
 
-    debug = this.getLogMethodWithMetaInformationFor('debug');
+    static getLogLevels = () => LOG_LEVEL;
 
-    info = this.getLogMethodWithMetaInformationFor('info');
+    getLogMethodWithMetaInformationFor = () => partial(getLogMethodFor, [this.getContext(), Logger.getDateFormat(), Logger.getMinimumLogLevel()]);
 
-    log = this.getLogMethodWithMetaInformationFor('log');
+    trace = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.TRACE)(...messages);
 
-    warn = this.getLogMethodWithMetaInformationFor('warn');
+    debug = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.DEBUG)(...messages);
 
-    error = this.getLogMethodWithMetaInformationFor('error');
+    info = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.INFO)(...messages);
+
+    log = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.LOG)(...messages);
+
+    warn = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.WARN)(...messages);
+
+    error = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.ERROR)(...messages);
 };
 
 export default Logger;
