@@ -8,10 +8,24 @@
 
 <script type="text/javascript">
     var simpleLogger = Logger();
-    simpleLogger.debug('Debug message 1');
+    simpleLogger.trace('Trace message');
+    simpleLogger.debug('Debug message');
+    simpleLogger.info('Info message');
+    simpleLogger.log('Log message');
+    simpleLogger.warn('Warn message');
+    simpleLogger.error('Error message');
+
+    console.log('');
+    console.log('');
+    console.log('');
 
     var contextLogger = Logger('main');
-    contextLogger.debug('Debug message 2');
+    contextLogger.trace('Trace message');
+    contextLogger.debug('Debug message');
+    contextLogger.info('Info message');
+    contextLogger.log('Log message');
+    contextLogger.warn('Warn message');
+    contextLogger.error('Error message');
 </script>
 
 </body>
