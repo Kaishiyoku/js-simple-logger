@@ -95,6 +95,7 @@
     }
   },
   "dependencies": {
+    "date-fns": "^2.0.0-alpha.11",
     "rollup-plugin-flow": "^1.1.1"
   }
 }

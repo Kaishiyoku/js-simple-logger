@@ -7,7 +7,9 @@
 <body>
 
 <script type="text/javascript">
-    var simpleLogger = Logger();
+    localStorage.clear();
+
+    var simpleLogger = new Logger();
     simpleLogger.trace('Trace message');
     simpleLogger.debug('Debug message');
     simpleLogger.info('Info message');
@@ -19,7 +21,9 @@
     console.log('');
     console.log('');
 
-    var contextLogger = Logger('main');
+    Logger.setDateFormat('HH:mm:ss');
+
+    var contextLogger = new Logger('main');
     contextLogger.trace('Trace message');
     contextLogger.debug('Debug message');
     contextLogger.info('Info message');

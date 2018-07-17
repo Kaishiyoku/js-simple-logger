@@ -1,22 +1,39 @@
 import getLogMethodFor from './getLogMethodFor';
 import partial from 'ramda/es/partial';
+import CONFIG from './CONFIG';
 
-const Logger = (context = null) => {
-    const getLogMethodWithContextFor = partial(getLogMethodFor, [context]);
+const Logger = class {
+    context = null;
 
-    return new class {
-        trace = getLogMethodWithContextFor('trace');
+    constructor(context = null) {
+        this.context = context;
+    }
 
-        debug = getLogMethodWithContextFor('debug');
+    getContext() {
+        return this.context;
+    }
 
-        info = getLogMethodWithContextFor('info');
+    static setDateFormat(format) {
+        localStorage.setItem(CONFIG.localStorageKeys.dateFormat, format);
+    }
 
-        log = getLogMethodWithContextFor('log');
+    static getDateFormat() {
+        return localStorage.getItem(CONFIG.localStorageKeys.dateFormat) || CONFIG.defaultDateFormat;
+    }
 
-        warn = getLogMethodWithContextFor('warn');
+    getLogMethodWithMetaInformationFor = partial(getLogMethodFor, [this.getContext(), Logger.getDateFormat()]);
 
-        error = getLogMethodWithContextFor('error');
-    };
+    trace = this.getLogMethodWithMetaInformationFor('trace');
+
+    debug = this.getLogMethodWithMetaInformationFor('debug');
+
+    info = this.getLogMethodWithMetaInformationFor('info');
+
+    log = this.getLogMethodWithMetaInformationFor('log');
+
+    warn = this.getLogMethodWithMetaInformationFor('warn');
+
+    error = this.getLogMethodWithMetaInformationFor('error');
 };
 
 export default Logger;
