@@ -5,7 +5,7 @@ import MockDate from 'mockdate';
 describe('Logger', () => {
     MockDate.set('3/10/2017 15:05:20.389');
 
-    var sampleData = [
+    const sampleData = [
         {name: 'A',value: 1},
         {name: 'B',value: 2},
         {name: 'C',value: 3},
