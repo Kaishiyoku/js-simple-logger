@@ -1,12 +1,11 @@
-import conditional from '../helpers/conditional';
-import call from '../helpers/call';
+import conditional from '../helpers/fp/conditional';
 
 const withMinimumLogLevel = (metaInformation) => (fn) => {
     const {minimumLogLevel, logLevel} = metaInformation;
 
     const formatter = conditional(fn, () => null);
 
-    return call(formatter(logLevel >= minimumLogLevel));
+    return formatter(logLevel >= minimumLogLevel);
 };
 
 export default withMinimumLogLevel;

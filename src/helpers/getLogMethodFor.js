@@ -1,6 +1,9 @@
 import logLevelResolvers from './logLevelResolvers';
 import buildMetaInformation from './buildMetaInformation';
+import prop from 'ramda/es/prop';
 
 export default function getLogMethodFor(context, dateFormat, minimumLogLevel, logLevel) {
-    return logLevelResolvers[logLevel](buildMetaInformation(minimumLogLevel, logLevel, dateFormat, context));
+    const logLevelFn = prop(logLevel, logLevelResolvers);
+
+    return logLevelFn(buildMetaInformation(minimumLogLevel, logLevel, dateFormat, context));
 }
