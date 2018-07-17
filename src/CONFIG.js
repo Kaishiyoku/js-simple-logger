@@ -8,6 +8,8 @@ const CONFIG = {
         dateFormat: 'simple-logger.dateFormat',
         minimumLogLevel: 'simple-logger.minimumLogLevel',
     },
+    prefix: '[',
+    suffix: ']',
 };
 
 export default CONFIG;

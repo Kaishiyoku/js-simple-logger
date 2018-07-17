@@ -1,9 +1,10 @@
-import getLogMethodFor from './getLogMethodFor';
+import getLogMethodFor from './helpers/getLogMethodFor';
 import partial from 'ramda/es/partial';
 import CONFIG from './CONFIG';
 import LOG_LEVEL from './LOG_LEVEL';
-import withMinimumLogLevel from './withMinimumLogLevel';
-import buildMetaInformation from './buildMetaInformation';
+import withMinimumLogLevel from './messageAdjusters/withMinimumLogLevel';
+import buildMetaInformation from './helpers/buildMetaInformation';
+import defaultTo from 'ramda/es/defaultTo';
 
 const Logger = class {
     context = null;
@@ -21,7 +22,9 @@ const Logger = class {
     }
 
     static getDateFormat() {
-        return localStorage.getItem(CONFIG.localStorageKeys.dateFormat) || CONFIG.defaultDateFormat;
+        const defaultToDateFormat = defaultTo(CONFIG.defaultDateFormat);
+
+        return defaultToDateFormat(localStorage.getItem(CONFIG.localStorageKeys.dateFormat));
     }
 
     static setMinimumLogLevel(logLevel) {
@@ -29,7 +32,9 @@ const Logger = class {
     }
 
     static getMinimumLogLevel() {
-        return localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel) || CONFIG.defaultMinimumLogLevel;
+        const defaultToMinimumLogLevel = defaultTo(CONFIG.defaultMinimumLogLevel);
+
+        return defaultToMinimumLogLevel(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel));
     }
 
     static getLogLevels = () => LOG_LEVEL;
