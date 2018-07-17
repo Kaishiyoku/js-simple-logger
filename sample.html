@@ -1,0 +1,18 @@
+<html>
+<head>
+    <title>Sample</title>
+
+    <script src="dist/simple-logger.umd.js"></script>
+</head>
+<body>
+
+<script type="text/javascript">
+    var simpleLogger = Logger();
+    simpleLogger.debug('Debug message 1');
+
+    var contextLogger = Logger('main');
+    contextLogger.debug('Debug message 2');
+</script>
+
+</body>
+</html>
