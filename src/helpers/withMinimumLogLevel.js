@@ -1,4 +1,4 @@
-import conditional from '../helpers/fp/conditional';
+import conditional from './fp/conditional';
 
 const withMinimumLogLevel = (metaInformation) => (fn) => {
     const {minimumLogLevel, logLevel} = metaInformation;

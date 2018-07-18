@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
-import log from '../log';
-import LOG_LEVEL from '../LOG_LEVEL';
-import withMinimumLogLevel from '../messageAdjusters/withMinimumLogLevel';
+import log from './log';
+import LOG_LEVEL from '../data/LOG_LEVEL';
+import withMinimumLogLevel from './withMinimumLogLevel';
 
 const logLevelResolvers = {
     [LOG_LEVEL.TRACE]: log(console.trace),

@@ -1,8 +1,8 @@
 import getLogMethodFor from './helpers/getLogMethodFor';
 import partial from 'ramda/es/partial';
-import CONFIG from './CONFIG';
-import LOG_LEVEL from './LOG_LEVEL';
-import withMinimumLogLevel from './messageAdjusters/withMinimumLogLevel';
+import CONFIG from './data/CONFIG';
+import LOG_LEVEL from './data/LOG_LEVEL';
+import withMinimumLogLevel from './helpers/withMinimumLogLevel';
 import buildMetaInformation from './helpers/buildMetaInformation';
 import defaultTo from 'ramda/es/defaultTo';
 

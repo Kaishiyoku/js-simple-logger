@@ -1,4 +1,4 @@
-import LOG_LEVEL from '../LOG_LEVEL';
+import LOG_LEVEL from '../data/LOG_LEVEL';
 import objSwitchKeysWithValues from './objSwitchKeysWithValues';
 import prop from 'ramda/es/prop';
 
