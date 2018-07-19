@@ -1,7 +1,7 @@
 # loremize
 
 [![Build Status](https://travis-ci.org/Kaishiyoku/js-simple-logger.svg?branch=master)](https://travis-ci.org/Kaishiyoku/js-simple-logger)
-[![npm version](https://badge.fury.io/js/loremize.svg)](https://www.npmjs.com/package/js-simple-logger)
+[![npm version](https://badge.fury.io/js/js-simple-logger.svg)](https://www.npmjs.com/package/js-simple-logger)
 
 Simple JavaScript console logger.
 
