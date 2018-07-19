@@ -1,3 +1,8 @@
-import Logger from './Logger';
+import {getLogger, setDateFormat, setMinimumLogLevel, getLogLevels} from './Logger';
 
-export default Logger;
+export {
+    getLogger,
+    setDateFormat,
+    setMinimumLogLevel,
+    getLogLevels,
+};

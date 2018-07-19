@@ -18,7 +18,7 @@ Open the console.
         {name: 'E', value: 5},
     ];
 
-    var simpleLogger = new Logger();
+    var simpleLogger = Logger.getLogger();
     simpleLogger.table(sampleList);
 
     simpleLogger.trace('Trace message');
@@ -32,9 +32,9 @@ Open the console.
     console.log('-------------------');
     console.log('');
 
-    Logger.setDateFormat('HH:mm:ss');
+    Logger.setDateFormat('mm:ss');
 
-    var contextLogger = new Logger('main');
+    var contextLogger = Logger.getLogger('main');
     contextLogger.trace('Trace message');
     contextLogger.debug('Debug message');
     contextLogger.info('Info message');
@@ -48,23 +48,14 @@ Open the console.
 
     Logger.setMinimumLogLevel(Logger.getLogLevels().TRACE);
 
-    simpleLogger.trace('Trace message');
-    simpleLogger.debug('Debug message');
-    simpleLogger.info('Info message');
-    simpleLogger.log('Log message');
-    simpleLogger.warn('Warn message');
-    simpleLogger.error('Error message');
+    var anotherLoger = Logger.getLogger();
 
-    console.log('');
-    console.log('-------------------');
-    console.log('');
-
-    simpleLogger.trace('Trace message');
-    simpleLogger.debug('Debug message');
-    simpleLogger.info('Info message');
-    simpleLogger.log('Log message');
-    simpleLogger.warn('Warn message');
-    simpleLogger.error('Error message');
+    anotherLoger.trace('Trace message');
+    anotherLoger.debug('Debug message');
+    anotherLoger.info('Info message');
+    anotherLoger.log('Log message');
+    anotherLoger.warn('Warn message');
+    anotherLoger.error('Error message');
 </script>
 
 </body>

@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
-import Logger from '../src/Logger';
 import MockDate from 'mockdate';
+import {getLogLevels, getLogger, setMinimumLogLevel} from '../src/Logger';
 
 describe('Logger', () => {
     MockDate.set('3/10/2017 15:05:20.389');
@@ -14,8 +14,8 @@ describe('Logger', () => {
     ];
 
     it('should log a simple message properly', () => {
-        Logger.setMinimumLogLevel(Logger.getLogLevels().TRACE);
-        const logger = new Logger();
+        setMinimumLogLevel(getLogLevels().TRACE);
+        const logger = getLogger();
 
         expect(logger.trace('Trace message')).toMatchSnapshot();
         expect(logger.debug('Debug message')).toMatchSnapshot();
@@ -27,7 +27,7 @@ describe('Logger', () => {
     });
 
     it('should log with a context', () => {
-        const logger = new Logger('main');
+        const logger = new getLogger('main');
 
         expect(logger.trace('Trace message')).toMatchSnapshot();
         expect(logger.debug('Debug message')).toMatchSnapshot();

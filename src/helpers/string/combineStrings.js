@@ -1,3 +1,3 @@
-const combineStrings = (...strings) => strings.reduce((accum, str) => `${accum}${str}`, '');
+const combineStrings = (...strings) => strings.join('');
 
 export default combineStrings;

@@ -1,59 +1,58 @@
+/* eslint-disable sort-keys */
 import getLogMethodFor from './helpers/getLogMethodFor';
-import partial from 'ramda/es/partial';
 import CONFIG from './data/CONFIG';
 import LOG_LEVEL from './data/LOG_LEVEL';
-import withMinimumLogLevel from './helpers/withMinimumLogLevel';
-import buildMetaInformation from './helpers/buildMetaInformation';
 import defaultTo from 'ramda/es/defaultTo';
+import compose from 'ramda/es/compose';
+import partialRight from 'ramda/es/partialRight';
 
-const Logger = class {
-    context = null;
+export function setDateFormat(format) {
+    localStorage.setItem(CONFIG.localStorageKeys.dateFormat, format);
+}
 
-    constructor(context = null) {
-        this.context = context;
-    }
+export function getDateFormat() {
+    const defaultToDateFormat = defaultTo(CONFIG.defaultDateFormat);
 
-    getContext() {
-        return this.context;
-    }
+    return defaultToDateFormat(localStorage.getItem(CONFIG.localStorageKeys.dateFormat));
+}
 
-    static setDateFormat(format) {
-        localStorage.setItem(CONFIG.localStorageKeys.dateFormat, format);
-    }
+export function setMinimumLogLevel(logLevel) {
+    localStorage.setItem(CONFIG.localStorageKeys.minimumLogLevel, logLevel);
+}
 
-    static getDateFormat() {
-        const defaultToDateFormat = defaultTo(CONFIG.defaultDateFormat);
+export function getMinimumLogLevel() {
+    const defaultToMinimumLogLevel = defaultTo(CONFIG.defaultMinimumLogLevel);
 
-        return defaultToDateFormat(localStorage.getItem(CONFIG.localStorageKeys.dateFormat));
-    }
+    return defaultToMinimumLogLevel(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel));
+}
 
-    static setMinimumLogLevel(logLevel) {
-        localStorage.setItem(CONFIG.localStorageKeys.minimumLogLevel, logLevel);
-    }
+export const getLogLevels = () => LOG_LEVEL;
 
-    static getMinimumLogLevel() {
-        const defaultToMinimumLogLevel = defaultTo(CONFIG.defaultMinimumLogLevel);
-
-        return defaultToMinimumLogLevel(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel));
-    }
-
-    static getLogLevels = () => LOG_LEVEL;
-
-    getLogMethodWithMetaInformationFor = () => partial(getLogMethodFor, [this.getContext(), Logger.getDateFormat(), Logger.getMinimumLogLevel()]);
-
-    trace = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.TRACE)(...messages);
-
-    debug = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.DEBUG)(...messages);
-
-    table = (list) => withMinimumLogLevel(buildMetaInformation(Logger.getMinimumLogLevel(), LOG_LEVEL.TABLE, null, null))(() => console.table(list));
-
-    info = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.INFO)(...messages);
-
-    log = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.LOG)(...messages);
-
-    warn = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.WARN)(...messages);
-
-    error = (...messages) => this.getLogMethodWithMetaInformationFor()(LOG_LEVEL.ERROR)(...messages);
+export const getMetaInformationFor = (logLevel, context) => {
+    return {
+        context,
+        dateFormat: getDateFormat(),
+        logLevel,
+        minimumLogLevel: getMinimumLogLevel(),
+    };
 };
 
-export default Logger;
+export const getLogger = (context = null) => {
+    const getLogMethodWithMetaInformationFor = partialRight(compose(getLogMethodFor, getMetaInformationFor), [context]);
+
+    return {
+        trace: getLogMethodWithMetaInformationFor(LOG_LEVEL.TRACE),
+
+        debug: getLogMethodWithMetaInformationFor(LOG_LEVEL.DEBUG),
+
+        table: getLogMethodWithMetaInformationFor(LOG_LEVEL.TABLE),
+
+        info: getLogMethodWithMetaInformationFor(LOG_LEVEL.INFO),
+
+        log: getLogMethodWithMetaInformationFor(LOG_LEVEL.LOG),
+
+        warn: getLogMethodWithMetaInformationFor(LOG_LEVEL.WARN),
+
+        error: getLogMethodWithMetaInformationFor(LOG_LEVEL.ERROR),
+    };
+};
