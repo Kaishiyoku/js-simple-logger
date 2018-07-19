@@ -1,4 +1,7 @@
-const withMinimumLogLevel = (metaInformation) => (fn) => {
+// @flow
+import type {MetaInformation} from '../types/MetaInformation';
+
+const withMinimumLogLevel = (metaInformation: MetaInformation) => (fn: Function) => {
     const {minimumLogLevel, logLevel} = metaInformation;
 
     return logLevel >= minimumLogLevel ? fn : null;

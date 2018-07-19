@@ -3,7 +3,7 @@ import resolve from 'rollup-plugin-node-resolve';
 import commonjs from 'rollup-plugin-commonjs';
 import {terser} from 'rollup-plugin-terser';
 import babel from 'rollup-plugin-babel';
-// import flow from 'rollup-plugin-flow';
+import flow from 'rollup-plugin-flow';
 import pkg from './package.json';
 
 export default [
@@ -16,7 +16,7 @@ export default [
             format: 'umd',
         },
         plugins: [
-            // flow(),
+            flow(),
             babel(),
             resolve(),
             commonjs(),
@@ -30,7 +30,7 @@ export default [
             {file: pkg.module, format: 'es'},
         ],
         plugins: [
-            // flow(),
+            flow(),
             babel(),
         ],
     },
@@ -41,7 +41,7 @@ export default [
             {file: pkg.main, format: 'cjs'},
         ],
         plugins: [
-            // flow(),
+            flow(),
             babel(),
             terser(),
         ],

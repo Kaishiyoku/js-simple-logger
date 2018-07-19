@@ -1,10 +1,12 @@
+// @flow
 import withMinimumLogLevel from './withMinimumLogLevel';
+import type {MetaInformation} from '../types/MetaInformation';
 
-const log = (handler) => (formatterFn) => (metaInformation) => (...messages) => {
-    const addMeta = (fn) => fn(metaInformation);
-    const withMinimumLogLevelAndMeta = addMeta(withMinimumLogLevel);
-    const formatterFnWithMeta = addMeta(formatterFn);
-    const handlerFn = handler(...formatterFnWithMeta(messages));
+const log: Function = (handler: Function) => (formatterFn: Function) => (metaInformation: MetaInformation) => (...messages: Array<string>) => {
+    const addMeta: Function = (fn: Function) => fn(metaInformation);
+    const withMinimumLogLevelAndMeta: Function = addMeta(withMinimumLogLevel);
+    const formatterFnWithMeta: Function = addMeta(formatterFn);
+    const handlerFn: Function = handler(...formatterFnWithMeta(messages));
 
     return withMinimumLogLevelAndMeta(handlerFn);
 };

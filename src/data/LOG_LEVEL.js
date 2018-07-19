@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable sort-keys */
 import deepFreeze from 'deep-freeze-node';
 

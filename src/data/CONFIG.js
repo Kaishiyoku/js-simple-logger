@@ -1,3 +1,4 @@
+// @flow
 import LOG_LEVEL from './LOG_LEVEL';
 
 const CONFIG = {

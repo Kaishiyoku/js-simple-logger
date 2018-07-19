@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable sort-keys */
 import getLogMethodFor from './helpers/getLogMethodFor';
 import CONFIG from './data/CONFIG';
@@ -8,31 +9,31 @@ import partialRight from 'ramda/es/partialRight';
 import logFormatter from './helpers/logFormatter';
 import Cacher from './helpers/Cacher';
 
-const formatterFnCache = new Cacher(logFormatter);
+const formatterFnCache: Cacher = new Cacher(logFormatter);
 
-export function setDateFormat(format) {
+export function setDateFormat(format: string) {
     localStorage.setItem(CONFIG.localStorageKeys.dateFormat, format);
 }
 
-export function getDateFormat() {
-    const defaultToDateFormat = defaultTo(CONFIG.defaultDateFormat);
+export function getDateFormat(): string {
+    const defaultToDateFormat: Function = defaultTo(CONFIG.defaultDateFormat);
 
     return defaultToDateFormat(localStorage.getItem(CONFIG.localStorageKeys.dateFormat));
 }
 
-export function setMinimumLogLevel(logLevel) {
+export function setMinimumLogLevel(logLevel: LOG_LEVEL) {
     localStorage.setItem(CONFIG.localStorageKeys.minimumLogLevel, logLevel);
 }
 
-export function getMinimumLogLevel() {
-    const defaultToMinimumLogLevel = defaultTo(CONFIG.defaultMinimumLogLevel);
+export function getMinimumLogLevel(): LOG_LEVEL {
+    const defaultToMinimumLogLevel: Function = defaultTo(CONFIG.defaultMinimumLogLevel);
 
     return defaultToMinimumLogLevel(parseInt(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel), 10));
 }
 
 export const getLogLevels = () => LOG_LEVEL;
 
-export const getMetaInformationFor = (logLevel, context) => {
+export const getMetaInformationFor = (logLevel: LOG_LEVEL, context: string|null) => {
     return {
         context,
         dateFormat: getDateFormat(),
@@ -41,11 +42,11 @@ export const getMetaInformationFor = (logLevel, context) => {
     };
 };
 
-export const setFormatter = (fn) => {
+export const setFormatter = (fn: Function) => {
     formatterFnCache.set(fn);
 };
 
-export const getLogger = (context = null) => {
+export const getLogger = (context: string|null = null) => {
     const getLogMethodWithMetaInformationFor = partialRight(compose(getLogMethodFor(formatterFnCache.get()), getMetaInformationFor), [context]);
 
     return {
@@ -63,7 +64,7 @@ export const getLogger = (context = null) => {
 
         error: getLogMethodWithMetaInformationFor(LOG_LEVEL.ERROR),
 
-        getContext() {
+        getContext(): string|null {
             return context;
         },
     };

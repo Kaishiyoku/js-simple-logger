@@ -1,7 +1,9 @@
-export default class Cacher {
-    cache = null;
+// @flow
 
-    constructor(initialValue) {
+export default class Cacher {
+    cache: any = null;
+
+    constructor(initialValue: any) {
         this.cache = initialValue;
     }
 
@@ -17,7 +19,7 @@ export default class Cacher {
         return this.cache;
     }
 
-    set(value) {
+    set(value: any) {
         this.cache = value;
     }
 }

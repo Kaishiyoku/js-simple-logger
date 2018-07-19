@@ -1,3 +1,4 @@
+// @flow
 /* eslint-disable no-console */
 import log from './log';
 import LOG_LEVEL from '../data/LOG_LEVEL';
