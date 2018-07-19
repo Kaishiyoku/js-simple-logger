@@ -91,7 +91,7 @@ Instead of `new Logger()` you create a new logger by using `getLogger()`;
 
 License
 =======
-MIT (https://github.com/Kaishiyoku/loremize/blob/master/LICENSE)
+MIT (https://github.com/Kaishiyoku/js-simple-logger/blob/master/LICENSE)
 
 
 Author
