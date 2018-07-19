@@ -1,11 +1,10 @@
 import withMinimumLogLevel from './withMinimumLogLevel';
-import logFormatter from './logFormatter';
 
-const log = (handler) => (metaInformation) => (...messages) => {
+const log = (handler) => (formatterFn) => (metaInformation) => (...messages) => {
     const addMeta = (fn) => fn(metaInformation);
     const withMinimumLogLevelAndMeta = addMeta(withMinimumLogLevel);
-    const formatterFn = addMeta(logFormatter);
-    const handlerFn = handler(...formatterFn(messages));
+    const formatterFnWithMeta = addMeta(formatterFn);
+    const handlerFn = handler(...formatterFnWithMeta(messages));
 
     return withMinimumLogLevelAndMeta(handlerFn);
 };

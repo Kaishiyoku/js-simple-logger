@@ -5,6 +5,10 @@ import LOG_LEVEL from './data/LOG_LEVEL';
 import defaultTo from 'ramda/es/defaultTo';
 import compose from 'ramda/es/compose';
 import partialRight from 'ramda/es/partialRight';
+import logFormatter from './helpers/logFormatter';
+import Cacher from './helpers/Cacher';
+
+const formatterFnCache = new Cacher(logFormatter);
 
 export function setDateFormat(format) {
     localStorage.setItem(CONFIG.localStorageKeys.dateFormat, format);
@@ -37,8 +41,12 @@ export const getMetaInformationFor = (logLevel, context) => {
     };
 };
 
+export const setFormatter = (fn) => {
+    formatterFnCache.set(fn);
+};
+
 export const getLogger = (context = null) => {
-    const getLogMethodWithMetaInformationFor = partialRight(compose(getLogMethodFor, getMetaInformationFor), [context]);
+    const getLogMethodWithMetaInformationFor = partialRight(compose(getLogMethodFor(formatterFnCache.get()), getMetaInformationFor), [context]);
 
     return {
         trace: getLogMethodWithMetaInformationFor(LOG_LEVEL.TRACE),

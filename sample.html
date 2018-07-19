@@ -48,6 +48,14 @@ Open the console.
 
     Logger.setMinimumLogLevel(Logger.getLogLevels().TRACE);
 
+    Logger.setFormatter(function (metaInformation = {}) {
+        const {dateFormat, logLevel, context} = metaInformation;
+
+        return function (messages) {
+            return [Logger.formatLogLevel(logLevel), context].concat(messages);
+        };
+    });
+
     var anotherLoger = Logger.getLogger();
 
     anotherLoger.trace('Trace message');
