@@ -1,6 +1,6 @@
 {
   "name": "js-simple-logger",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "Simple JavaScript-logger.",
   "main": "dist/js-simple-logger.cjs.js",
   "module": "dist/js-simple-logger.esm.js",
