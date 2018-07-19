@@ -1,5 +1,11 @@
 # Change Log
 
+## [2.0.2](https://github.com/kaishiyoku/js-simple-logger/tree/2.0.2) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.0.1...2.0.2)
+
+## [2.0.1](https://github.com/kaishiyoku/js-simple-logger/tree/2.0.1) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.0.0...2.0.1)
+
 ## [2.0.0](https://github.com/kaishiyoku/js-simple-logger/tree/2.0.0) (2018-07-19)
 [Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/1.0.0...2.0.0)
 
