@@ -26,7 +26,13 @@ Simple logger
 import * as Logger from 'js-simple-logger';
 
 const logger = Logger.getLogger();
+logger.trace('message');
 logger.debug('message');
+logger.table([1, 2, 3]);
+logger.info('message');
+logger.log('message');
+logger.warn('message');
+logger.error('message');
 ```
 
 Contextual logger
@@ -87,7 +93,7 @@ Breaking changes
 1.x.x > 2.x.x
 -------------
 
-Instead of `new Logger()` you create a new logger by using `getLogger()`;
+Instead of `new Logger()` you create a new logger by using `getLogger()`.
 
 License
 =======
