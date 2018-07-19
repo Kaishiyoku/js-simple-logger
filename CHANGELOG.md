@@ -48,14 +48,11 @@
 
 - Add table logging [\#8](https://github.com/Kaishiyoku/js-simple-logger/issues/8)
 - Make context padded [\#7](https://github.com/Kaishiyoku/js-simple-logger/issues/7)
+- Make log level padded [\#6](https://github.com/Kaishiyoku/js-simple-logger/issues/6)
 - Add the ability to set minimum log level [\#5](https://github.com/Kaishiyoku/js-simple-logger/issues/5)
 - Display timestamp [\#4](https://github.com/Kaishiyoku/js-simple-logger/issues/4)
 - Display log level [\#3](https://github.com/Kaishiyoku/js-simple-logger/issues/3)
 - Add the ability to set a logger context [\#2](https://github.com/Kaishiyoku/js-simple-logger/issues/2)
-
-**Closed issues:**
-
-- Make log level padded [\#6](https://github.com/Kaishiyoku/js-simple-logger/issues/6)
 
 
 
