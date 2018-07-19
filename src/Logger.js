@@ -62,5 +62,9 @@ export const getLogger = (context = null) => {
         warn: getLogMethodWithMetaInformationFor(LOG_LEVEL.WARN),
 
         error: getLogMethodWithMetaInformationFor(LOG_LEVEL.ERROR),
+
+        getContext() {
+            return context;
+        },
     };
 };
