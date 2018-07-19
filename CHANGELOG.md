@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.3.0](https://github.com/kaishiyoku/js-simple-logger/tree/2.3.0) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.2.1...2.3.0)
+
+**Implemented enhancements:**
+
+- Add Flow typings [\#15](https://github.com/Kaishiyoku/js-simple-logger/issues/15)
+
 ## [2.2.1](https://github.com/kaishiyoku/js-simple-logger/tree/2.2.1) (2018-07-19)
 [Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.2.0...2.2.1)
 
