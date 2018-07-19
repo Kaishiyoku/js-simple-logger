@@ -1,10 +1,10 @@
 {
   "name": "js-simple-logger",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Simple JavaScript-logger.",
-  "main": "dist/simple-logger.cjs.js",
-  "module": "dist/simple-logger.esm.js",
-  "browser": "dist/simple-logger.umd.js",
+  "main": "dist/js-simple-logger.cjs.js",
+  "module": "dist/js-simple-logger.esm.js",
+  "browser": "dist/js-simple-logger.umd.js",
   "scripts": {
     "lint": "eslint ./src ./scripts --ext .js",
     "build:clean": "babel-node --presets es2015 scripts/cleanup-build-dir.js",
