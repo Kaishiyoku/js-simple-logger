@@ -27,7 +27,7 @@ describe('Logger', () => {
     });
 
     it('should log with a context', () => {
-        const logger = new getLogger('main');
+        const logger = getLogger('main');
 
         expect(logger.trace('Trace message')).toMatchSnapshot();
         expect(logger.debug('Debug message')).toMatchSnapshot();
