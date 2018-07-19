@@ -1,5 +1,27 @@
 # Change Log
 
+## [2.2.0](https://github.com/kaishiyoku/js-simple-logger/tree/2.2.0) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.1.1...2.2.0)
+
+**Implemented enhancements:**
+
+- Add function for retrieving current global log level [\#13](https://github.com/Kaishiyoku/js-simple-logger/issues/13)
+- Add ability to disable logging [\#12](https://github.com/Kaishiyoku/js-simple-logger/issues/12)
+
+## [2.1.1](https://github.com/kaishiyoku/js-simple-logger/tree/2.1.1) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.1.0...2.1.1)
+
+**Fixed bugs:**
+
+- Bundle not minimized [\#11](https://github.com/Kaishiyoku/js-simple-logger/issues/11)
+
+## [2.1.0](https://github.com/kaishiyoku/js-simple-logger/tree/2.1.0) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.0.2...2.1.0)
+
+**Implemented enhancements:**
+
+- Add the ability to get the context for a given logger [\#10](https://github.com/Kaishiyoku/js-simple-logger/issues/10)
+
 ## [2.0.2](https://github.com/kaishiyoku/js-simple-logger/tree/2.0.2) (2018-07-19)
 [Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.0.1...2.0.2)
 
