@@ -53,6 +53,7 @@
     "del": "3.0.0",
     "eslint": "4.19.1",
     "eslint-plugin-babel": "5.1.0",
+    "eslint-plugin-flowtype": "^2.50.0",
     "eslint-plugin-fp": "2.3.0",
     "eslint-plugin-no-unsafe-chars": "1.0.2",
     "flow-bin": "^0.76.0",

@@ -16,7 +16,8 @@
   "plugins": [
     "babel",
     "fp",
-    "no-unsafe-chars"
+    "no-unsafe-chars",
+    "flowtype"
   ],
   "rules": {
     "indent": ["error", 4, {"SwitchCase": 1}],
