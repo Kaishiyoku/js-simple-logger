@@ -20,7 +20,7 @@ export default [
             babel(),
             resolve(),
             commonjs(),
-            // terser(),
+            terser(),
         ],
     },
     {
@@ -43,7 +43,7 @@ export default [
         plugins: [
             // flow(),
             babel(),
-            // terser(),
+            terser(),
         ],
     },
 ];
