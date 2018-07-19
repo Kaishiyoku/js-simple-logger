@@ -1,5 +1,12 @@
 # Change Log
 
+## [2.2.1](https://github.com/kaishiyoku/js-simple-logger/tree/2.2.1) (2018-07-19)
+[Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.2.0...2.2.1)
+
+**Fixed bugs:**
+
+- Function getMinimumLogLevel\(\) returning a string instead of an integer [\#14](https://github.com/Kaishiyoku/js-simple-logger/issues/14)
+
 ## [2.2.0](https://github.com/kaishiyoku/js-simple-logger/tree/2.2.0) (2018-07-19)
 [Full Changelog](https://github.com/kaishiyoku/js-simple-logger/compare/2.1.1...2.2.0)
 
