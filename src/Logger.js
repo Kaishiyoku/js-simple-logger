@@ -27,7 +27,7 @@ export function setMinimumLogLevel(logLevel) {
 export function getMinimumLogLevel() {
     const defaultToMinimumLogLevel = defaultTo(CONFIG.defaultMinimumLogLevel);
 
-    return defaultToMinimumLogLevel(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel));
+    return defaultToMinimumLogLevel(parseInt(localStorage.getItem(CONFIG.localStorageKeys.minimumLogLevel), 10));
 }
 
 export const getLogLevels = () => LOG_LEVEL;
